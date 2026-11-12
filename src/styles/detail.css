@@ -1,0 +1,391 @@
+.detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.detail-head-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.detail-tagline {
+  color: var(--ink-muted);
+  font-size: 1.125rem;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.gallery-main {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 3 / 2;
+  background: var(--surface-sunk);
+}
+
+.gallery-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-caption {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.gallery-thumb {
+  padding: 0;
+  overflow: hidden;
+  border: 0.1875rem solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--surface-sunk);
+  aspect-ratio: 3 / 2;
+  cursor: pointer;
+}
+
+.gallery-thumb.is-active {
+  border-color: var(--brand);
+}
+
+.gallery-thumb-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.detail-description {
+  max-width: 45rem;
+  font-size: 1.0625rem;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-weight: 600;
+}
+
+.facts li,
+.amenity-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.amenity-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+}
+
+.amenity-list .icon {
+  color: var(--brand);
+}
+
+.booking-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.booking-card-price {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+}
+
+.booking-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--edge-strong);
+  border-radius: var(--radius-md);
+}
+
+.booking-dates > div {
+  padding: 0.5rem 0.75rem;
+  min-width: 0;
+}
+
+.booking-dates > div + div {
+  border-left: 1px solid var(--edge-strong);
+}
+
+.price-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.price-breakdown > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.price-breakdown dt {
+  color: var(--ink-muted);
+}
+
+.price-breakdown dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.price-total {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--edge);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.price-total dt {
+  color: var(--ink);
+}
+
+.fine-print {
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.calendar-status {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.calendar-months {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.calendar-month {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.calendar-month caption {
+  padding-bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.calendar-month th {
+  padding-bottom: 0.25rem;
+  color: var(--ink-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.calendar-month abbr {
+  text-decoration: none;
+}
+
+.calendar-month td {
+  padding: 0.125rem 0;
+  text-align: center;
+}
+
+.day {
+  width: 100%;
+  max-width: 2.75rem;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.day:hover:not(.is-disabled) {
+  border-color: var(--ink);
+}
+
+.day.is-today {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.1875rem;
+}
+
+.day.is-disabled {
+  color: var(--ink-faint);
+  cursor: default;
+}
+
+.day.is-booked {
+  color: var(--ink-muted);
+  text-decoration: line-through;
+  background: var(--surface-sunk);
+}
+
+.day.is-in-range {
+  background: var(--range);
+  border-radius: 0.5rem;
+  color: var(--ink);
+}
+
+.day.is-start,
+.day.is-end {
+  background: var(--brand);
+  color: var(--on-brand);
+  text-decoration: none;
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
+.calendar-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-swatch {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--edge-strong);
+}
+
+.legend-swatch.is-free {
+  background: var(--surface);
+}
+
+.legend-swatch.is-booked {
+  background: var(--surface-sunk);
+}
+
+.legend-swatch.is-selected {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+@media (min-width: 48rem) {
+  .gallery {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  }
+
+  .gallery-thumbs {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    min-height: 0;
+  }
+
+  .gallery-thumb {
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+
+  .calendar-months {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .amenity-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 80rem) {
+  .detail-layout {
+    grid-template-columns: minmax(0, 1fr) 24rem;
+    gap: 2rem 3rem;
+  }
+
+  .detail-main,
+  .detail-calendar {
+    grid-column: 1;
+  }
+
+  .booking-card {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: start;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .gallery {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 1fr);
+  }
+}

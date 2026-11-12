@@ -1,0 +1,276 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--edge);
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--ink);
+}
+
+.brand-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.brand-mark-bg {
+  fill: var(--brand);
+}
+
+.brand-mark-house,
+.brand-mark-line {
+  fill: var(--on-brand);
+  stroke: var(--on-brand);
+}
+
+.brand-mark-house {
+  stroke: none;
+}
+
+.brand-mark-door {
+  fill: var(--accent);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.demo-pill {
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warning-soft);
+  color: var(--warning-hard);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.main-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: var(--surface);
+  border-top: 1px solid var(--edge);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.5rem 0.25rem;
+  color: var(--ink-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: var(--ink);
+}
+
+.nav-item.is-active {
+  color: var(--brand);
+}
+
+.nav-item .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.nav-count {
+  position: absolute;
+  top: 0.25rem;
+  left: calc(50% + 0.5rem);
+  min-width: 1.25rem;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--surface);
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 6rem;
+}
+
+.page:focus {
+  outline: none;
+}
+
+.notices {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.notices:empty {
+  display: none;
+}
+
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  border: 1px solid var(--warning-hard);
+  border-radius: var(--radius-md);
+  background: var(--warning-soft);
+  color: var(--warning-hard);
+}
+
+.notice p {
+  flex: 1;
+  font-weight: 500;
+}
+
+.inline-notice {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--warning-soft);
+  color: var(--warning-hard);
+}
+
+.site-footer {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 2rem 1rem 7rem;
+  border-top: 1px solid var(--edge);
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+}
+
+.site-footer p {
+  max-width: 45rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 2rem 1.5rem;
+  border: 1px dashed var(--edge-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.page-message {
+  max-width: 40rem;
+  margin: 2rem auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.list-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 48rem) {
+  .site-header-inner {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .main-nav {
+    position: static;
+    display: flex;
+    gap: 0.25rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .nav-item {
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9375rem;
+  }
+
+  .nav-item:hover {
+    background: var(--surface-sunk);
+  }
+
+  .nav-item.is-active {
+    background: var(--brand-soft);
+    color: var(--ink);
+  }
+
+  .nav-item .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .nav-count {
+    position: static;
+  }
+
+  .page {
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .notices {
+    padding: 0 1.5rem;
+  }
+
+  .site-footer {
+    padding: 2rem 1.5rem 3rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  .site-header-inner,
+  .page,
+  .notices,
+  .site-footer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

@@ -1,0 +1,289 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 45rem;
+}
+
+.hero-lede {
+  color: var(--ink-muted);
+  font-size: 1.125rem;
+}
+
+.search-panel {
+  padding: 1rem;
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.field-where,
+.search-submit {
+  grid-column: 1 / -1;
+}
+
+.filters {
+  margin-top: 1rem;
+  border-top: 1px solid var(--edge);
+  padding-top: 0.75rem;
+}
+
+.filters summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--field-height);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filters-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 0.75rem;
+}
+
+.price-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.price-fields legend {
+  grid-column: 1 / -1;
+}
+
+.field-sort {
+  max-width: 20rem;
+}
+
+.filters-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.home-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.home-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-0.125rem);
+}
+
+.home-card:focus-within {
+  box-shadow: 0 0 0 0.1875rem var(--brand);
+}
+
+.home-card-media {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  background: var(--surface-sunk);
+}
+
+.home-card-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.home-card-fav {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+}
+
+.fav-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.fav-button.is-saved {
+  color: var(--danger);
+}
+
+.fav-button:hover {
+  background: var(--surface-sunk);
+}
+
+.home-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem 1.25rem;
+  min-width: 0;
+}
+
+.home-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.home-card-town {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.home-card-town .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.home-card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.home-card-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.home-card-title a:focus-visible {
+  outline: none;
+}
+
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.home-card-tagline {
+  color: var(--ink-muted);
+}
+
+.home-card-meta {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
+.home-card-price {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.rating-star {
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent);
+}
+
+@media (min-width: 48rem) {
+  .search-panel {
+    padding: 1.25rem;
+  }
+
+  .search-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filters-body {
+    display: grid;
+    grid-template-columns: 20rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .amenity-fields {
+    grid-row: span 2;
+  }
+
+  .filters-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 80rem) {
+  .search-grid {
+    grid-template-columns: minmax(0, 2fr) repeat(4, minmax(0, 1fr)) auto;
+    align-items: end;
+  }
+
+  .field-where,
+  .search-submit {
+    grid-column: auto;
+  }
+
+  .home-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 90rem) {
+  .home-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
