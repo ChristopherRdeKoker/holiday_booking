@@ -50,7 +50,7 @@ export function TripPage() {
       </dl>
       <div className="trip-actions">
         <Link to="/bookings" className="button button-primary">
-          View all trips
+          My bookings
         </Link>
         {canCancel && <CancelBookingButton title={home.title} onCancel={() => cancelBooking(booking.ref)} />}
       </div>

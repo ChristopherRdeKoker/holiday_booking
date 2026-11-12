@@ -25,7 +25,7 @@ function BookingForm({ home }: { home: z.infer<typeof homeSchema> }) {
 
   const stay = { checkIn: params.get("checkIn") ?? "", checkOut: params.get("checkOut") ?? "" };
   const requestedGuests = Math.min(Math.max(Number(params.get("guests")) || 1, 1), home.maxGuests);
-  const problem = checkRange(stay, today, blocked);
+  const [arrivalProblem] = useState(() => checkRange(stay, today, blocked));
 
   function handleConfirm(details: z.output<typeof guestDetailsSchema>) {
     const outcome = createBooking(home.id, stay, details, today);
@@ -33,11 +33,11 @@ function BookingForm({ home }: { home: z.infer<typeof homeSchema> }) {
     if (outcome.problem) setSubmitError(bookingProblemMessage(outcome.problem));
   }
 
-  if (problem) {
+  if (arrivalProblem) {
     return (
       <section className="refusal" role="alert" data-testid="booking-refused">
         <h1>These dates can't be booked</h1>
-        <p>{problemMessage(problem)}</p>
+        <p>{problemMessage(arrivalProblem)}</p>
         <Link to={`/stays/${home.id}`} className="button button-primary">
           Pick other dates
         </Link>

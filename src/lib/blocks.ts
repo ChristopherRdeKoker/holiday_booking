@@ -1,5 +1,5 @@
 import type { z } from "zod";
-import type { DateRangeType } from "@/lib/availability";
+import { rangesOverlap, type DateRangeType } from "@/lib/availability";
 import { addDays, type ISODateType } from "@/lib/dates";
 import type { bookingSchema } from "@/lib/schemas/bookingSchema";
 import type { homeSchema } from "@/lib/schemas/homeSchema";
@@ -16,7 +16,7 @@ export function blockedRangesFor(home: z.infer<typeof homeSchema>, today: ISODat
   const guestRanges = bookings
     .filter((booking) => booking.homeId === home.id && booking.status === "confirmed")
     .map(({ checkIn, checkOut }) => ({ checkIn, checkOut }));
-  const seededRanges = seededBlocks(home.blockedOffsets, today);
+  const seededRanges = seededBlocks(home.blockedOffsets, today).filter((seeded) => !guestRanges.some((guest) => rangesOverlap(seeded, guest)));
 
   const result = [...seededRanges, ...guestRanges];
   return result;

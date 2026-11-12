@@ -7,10 +7,10 @@ import { homes } from "@/data/homes";
 import { useBookings, useToday } from "@/hooks/useAppStores";
 import { formatDate, nightsBetween } from "@/lib/dates";
 import { filterHomes } from "@/lib/filterHomes";
-import type { searchFormSchema } from "@/lib/schemas/searchFormSchema";
+import type { SearchFormSchemaType } from "@/lib/schemas/searchFormSchema";
 import { defaultSearch, readSearchParams, writeSearchParams } from "@/lib/searchParams";
 
-function _stayQuery(search: z.infer<typeof searchFormSchema>): string {
+function _stayQuery(search: z.infer<SearchFormSchemaType>): string {
   const params = new URLSearchParams();
   if (search.checkIn && search.checkOut) params.set("checkIn", search.checkIn);
   if (search.checkIn && search.checkOut) params.set("checkOut", search.checkOut);
@@ -26,12 +26,12 @@ export function BrowsePage() {
   const today = useToday();
   const { bookings } = useBookings();
 
-  const { search, isInvalid } = useMemo(() => readSearchParams(params), [params]);
+  const { search, isInvalid } = useMemo(() => readSearchParams(params, today), [params, today]);
   const results = useMemo(() => filterHomes(homes, search, today, bookings), [search, today, bookings]);
   const hasDates = !!search.checkIn.length && !!search.checkOut.length;
   const homesLabel = results.length === 1 ? "home" : "homes";
 
-  function handleSearch(next: z.infer<typeof searchFormSchema>) {
+  function handleSearch(next: z.infer<SearchFormSchemaType>) {
     setParams(writeSearchParams(next));
   }
 

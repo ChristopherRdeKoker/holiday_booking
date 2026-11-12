@@ -1,7 +1,8 @@
 import type { z } from "zod";
-import { searchFormSchema } from "@/lib/schemas/searchFormSchema";
+import type { ISODateType } from "@/lib/dates";
+import { createSearchFormSchema, type SearchFormSchemaType } from "@/lib/schemas/searchFormSchema";
 
-export const defaultSearch: z.infer<typeof searchFormSchema> = {
+export const defaultSearch: z.infer<SearchFormSchemaType> = {
   q: "",
   town: "",
   checkIn: "",
@@ -13,8 +14,8 @@ export const defaultSearch: z.infer<typeof searchFormSchema> = {
   sort: "recommended",
 };
 
-export function readSearchParams(params: URLSearchParams): { search: z.infer<typeof searchFormSchema>; isInvalid: boolean } {
-  const parsed = searchFormSchema.safeParse({
+export function readSearchParams(params: URLSearchParams, today: ISODateType): { search: z.infer<SearchFormSchemaType>; isInvalid: boolean } {
+  const parsed = createSearchFormSchema(today).safeParse({
     q: params.get("q") ?? "",
     town: params.get("town") ?? "",
     checkIn: params.get("checkIn") ?? "",
@@ -29,7 +30,7 @@ export function readSearchParams(params: URLSearchParams): { search: z.infer<typ
   return result;
 }
 
-export function writeSearchParams(search: z.infer<typeof searchFormSchema>): URLSearchParams {
+export function writeSearchParams(search: z.infer<SearchFormSchemaType>): URLSearchParams {
   const result = new URLSearchParams();
   const query = search.q.trim();
   const hasDates = !!search.checkIn.length && !!search.checkOut.length;
@@ -46,7 +47,7 @@ export function writeSearchParams(search: z.infer<typeof searchFormSchema>): URL
   return result;
 }
 
-export function countExtraFilters(search: z.infer<typeof searchFormSchema>): number {
+export function countExtraFilters(search: z.infer<SearchFormSchemaType>): number {
   const hasPrice = search.minPrice !== "" || search.maxPrice !== "";
   const hasSort = search.sort !== defaultSearch.sort;
   const result = search.amenities.length + Number(hasPrice) + Number(hasSort);

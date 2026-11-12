@@ -45,3 +45,20 @@ describe("filterHomes", () => {
   });
 });
 
+
+describe("seeded availability over time", () => {
+  it("never lets a moving seeded block overlap a stored guest booking", () => {
+    const bookingDay = "2026-11-12";
+    for (const home of homes) {
+      const [start, nights] = home.blockedOffsets[0];
+      const checkIn = addDays(bookingDay, start + nights);
+      const booking: z.infer<typeof bookingSchema> = { ref: "STP-AAA-BBB", homeId: home.id, checkIn, checkOut: addDays(checkIn, 2), guests: 1, name: "A", email: "a@example.com", totalCents: 1, createdAt: "2026-11-12T00:00:00.000Z", status: "confirmed" };
+      for (let dayOffset = 0; dayOffset <= 30; dayOffset++) {
+        const ranges = blockedRangesFor(home, addDays(bookingDay, dayOffset), [booking]);
+        const guestRange = { checkIn: booking.checkIn, checkOut: booking.checkOut };
+        const clashes = ranges.filter((range) => range.checkIn !== guestRange.checkIn && range.checkIn < guestRange.checkOut && guestRange.checkIn < range.checkOut);
+        expect(clashes, `${home.id} on day +${dayOffset}`).toEqual([]);
+      }
+    }
+  });
+});

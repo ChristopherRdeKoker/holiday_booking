@@ -39,7 +39,7 @@ export function SiteHeader() {
         <nav className="main-nav" aria-label="Main">
           <NavItem to="/" end icon="search" label="Explore" count={0} />
           <NavItem to="/saved" icon="heart" label="Saved" count={favourites.size} />
-          <NavItem to="/bookings" icon="suitcase" label="Trips" count={upcomingCount} />
+          <NavItem to="/bookings" icon="suitcase" label="Bookings" count={upcomingCount} />
         </nav>
       </div>
     </header>

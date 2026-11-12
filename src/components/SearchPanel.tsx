@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
@@ -6,13 +7,13 @@ import { amenityLabels, Icon } from "@/components/Icon";
 import { towns } from "@/data/homes";
 import { addDays, type ISODateType } from "@/lib/dates";
 import { amenitySchema } from "@/lib/schemas/fieldSchemas";
-import { searchFormSchema, sortSchema } from "@/lib/schemas/searchFormSchema";
+import { createSearchFormSchema, sortSchema, type SearchFormSchemaType } from "@/lib/schemas/searchFormSchema";
 import { countExtraFilters, defaultSearch } from "@/lib/searchParams";
 
 type SearchPanelProps = {
-  search: z.infer<typeof searchFormSchema>;
+  search: z.infer<SearchFormSchemaType>;
   today: ISODateType;
-  onSearch: (search: z.infer<typeof searchFormSchema>) => void;
+  onSearch: (search: z.infer<SearchFormSchemaType>) => void;
 };
 
 const sortLabels: Record<z.infer<typeof sortSchema>, string> = {
@@ -24,7 +25,7 @@ const sortLabels: Record<z.infer<typeof sortSchema>, string> = {
 
 const guestOptions = Array.from({ length: 10 }, (_, index) => index + 1);
 
-function _formValues(search: z.infer<typeof searchFormSchema>): z.input<typeof searchFormSchema> {
+function _formValues(search: z.infer<SearchFormSchemaType>): z.input<SearchFormSchemaType> {
   const result = {
     ...search,
     guests: String(search.guests),
@@ -35,8 +36,9 @@ function _formValues(search: z.infer<typeof searchFormSchema>): z.input<typeof s
 }
 
 export function SearchPanel({ search, today, onSearch }: SearchPanelProps) {
-  const formMethods = useForm<z.input<typeof searchFormSchema>, unknown, z.output<typeof searchFormSchema>>({
-    resolver: zodResolver(searchFormSchema),
+  const searchSchema = useMemo(() => createSearchFormSchema(today), [today]);
+  const formMethods = useForm<z.input<SearchFormSchemaType>, unknown, z.output<SearchFormSchemaType>>({
+    resolver: zodResolver(searchSchema),
     defaultValues: _formValues(search),
   });
   const {
@@ -94,7 +96,7 @@ export function SearchPanel({ search, today, onSearch }: SearchPanelProps) {
             ))}
           </select>
         </div>
-        <button type="submit" className="button button-primary search-submit" disabled={!isDirty}>
+        <button type="submit" className="button button-primary search-submit">
           <Icon name="search" />
           Search
         </button>

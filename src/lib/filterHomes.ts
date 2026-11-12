@@ -4,7 +4,7 @@ import { blockedRangesFor } from "@/lib/blocks";
 import type { ISODateType } from "@/lib/dates";
 import type { bookingSchema } from "@/lib/schemas/bookingSchema";
 import type { homeSchema } from "@/lib/schemas/homeSchema";
-import type { searchFormSchema, sortSchema } from "@/lib/schemas/searchFormSchema";
+import type { SearchFormSchemaType, sortSchema } from "@/lib/schemas/searchFormSchema";
 
 type HomeType = z.infer<typeof homeSchema>;
 
@@ -31,7 +31,7 @@ const homeSorters: Record<z.infer<typeof sortSchema>, (first: HomeType, second: 
 
 export function filterHomes(
   homes: readonly HomeType[],
-  search: z.infer<typeof searchFormSchema>,
+  search: z.infer<SearchFormSchemaType>,
   today: ISODateType,
   bookings: readonly z.infer<typeof bookingSchema>[],
 ): HomeType[] {

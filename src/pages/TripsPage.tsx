@@ -34,10 +34,10 @@ export function TripsPage() {
 
   return (
     <article className="list-page">
-      <h1>My trips</h1>
+      <h1>My bookings</h1>
       {!bookings.length && (
         <div className="empty-state">
-          <h2>No trips yet</h2>
+          <h2>No bookings yet</h2>
           <p>When you book a stay it shows up here, saved in this browser.</p>
           <Link to="/" className="button button-primary">
             Find a home
