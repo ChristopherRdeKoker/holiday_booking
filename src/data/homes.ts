@@ -18,7 +18,6 @@ const homeRecords = [
     amenities: ["wifi", "sea-view", "braai", "kitchen", "parking"],
     description:
       "A whitewashed West Coast loft with a deep stoep facing the bay. Mornings start with the fishing boats coming in; evenings end with a braai and a sky full of stars. Linen, a full kitchen and outdoor shower included.",
-    art: { scene: "coast", house: "cottage", wall: "#f4f1ea", roof: "#3d6e8f", accent: "#e0a43a", seed: 3 },
     blockedOffsets: [[2, 3], [9, 4], [24, 5], [41, 3]],
   },
   {
@@ -37,7 +36,6 @@ const homeRecords = [
     amenities: ["wifi", "fireplace", "mountain-view", "kitchen", "pet-friendly", "parking"],
     description:
       "A one-bedroom cottage of honey-coloured sandstone, a short walk from the village square. Wood is stacked by the fireplace, and the bath has a window onto the golden cliffs.",
-    art: { scene: "mountain", house: "cottage", wall: "#d9b77e", roof: "#5b4636", accent: "#2f6f5e", seed: 7 },
     blockedOffsets: [[1, 2], [6, 3], [15, 2], [33, 6]],
   },
   {
@@ -56,7 +54,6 @@ const homeRecords = [
     amenities: ["wifi", "pool", "braai", "kitchen", "parking", "workspace", "aircon"],
     description:
       "A four-bedroom timber house with a jetty onto the lagoon. Two kayaks and a paddle-board live under the deck. Open-plan living, a plunge pool, and room for two families.",
-    art: { scene: "lagoon", house: "modern", wall: "#e9e3d6", roof: "#2c3e4a", accent: "#c26a3d", seed: 11 },
     blockedOffsets: [[4, 7], [18, 4], [30, 7]],
   },
   {
@@ -75,7 +72,6 @@ const homeRecords = [
     amenities: ["wifi", "pool", "mountain-view", "kitchen", "aircon", "parking"],
     description:
       "An old Cape barn with gables, now three bedrooms with lime-washed walls and oak floors. The pool looks over rows of vines to the mountains. Bicycles for the wine route are in the shed.",
-    art: { scene: "vineyard", house: "farmhouse", wall: "#f6f2e8", roof: "#4a4a4a", accent: "#7a2f3b", seed: 5 },
     blockedOffsets: [[3, 3], [12, 5], [27, 3], [45, 4]],
   },
   {
@@ -94,7 +90,6 @@ const homeRecords = [
     amenities: ["fireplace", "hot-tub", "pet-friendly", "parking"],
     description:
       "A small timber cabin on stilts among yellowwoods and waterfalls. Solar power, a wood-fired hot tub and no wifi on purpose. Bring boots and a good book.",
-    art: { scene: "forest", house: "cabin", wall: "#8a5a3b", roof: "#33402f", accent: "#e8c35a", seed: 2 },
     blockedOffsets: [[0, 2], [5, 2], [10, 3], [20, 2], [38, 4]],
   },
   {
@@ -113,7 +108,6 @@ const homeRecords = [
     amenities: ["braai", "fireplace", "kitchen", "pet-friendly", "parking"],
     description:
       "A Karoo townhouse with a long stoep, pressed-ceiling rooms and a garden of quince trees. The nights are cold and silent and the stars come down to the horizon.",
-    art: { scene: "karoo", house: "farmhouse", wall: "#ead9b8", roof: "#7d8b8f", accent: "#3b6f8f", seed: 9 },
     blockedOffsets: [[7, 3], [21, 4], [36, 2]],
   },
   {
@@ -132,7 +126,6 @@ const homeRecords = [
     amenities: ["wifi", "pool", "sea-view", "aircon", "kitchen", "workspace", "parking", "hot-tub"],
     description:
       "A modern villa on the cliff path with floor-to-ceiling glass. From June to November southern right whales pass below the lounge. Heated pool, three en-suite bedrooms and a quiet study.",
-    art: { scene: "coast", house: "modern", wall: "#f7f7f4", roof: "#2a2f33", accent: "#2f7d8c", seed: 13 },
     blockedOffsets: [[2, 4], [13, 3], [22, 6], [40, 3]],
   },
   {
@@ -151,7 +144,6 @@ const homeRecords = [
     amenities: ["wifi", "sea-view", "braai", "kitchen", "pet-friendly"],
     description:
       "A colourful timber shack in the dunes with a hammock, an outdoor shower and a path straight to the beach. Simple, sandy and much loved.",
-    art: { scene: "coast", house: "beach-shack", wall: "#5fa8a0", roof: "#f0e2c4", accent: "#e46f4f", seed: 4 },
     blockedOffsets: [[1, 3], [8, 2], [16, 4], [29, 3]],
   },
   {
@@ -170,7 +162,6 @@ const homeRecords = [
     amenities: ["wifi", "fireplace", "braai", "kitchen", "parking", "mountain-view"],
     description:
       "A stone-and-timber lodge on the edge of the escarpment forest, twenty minutes from three waterfalls. Big fireplace, a long dining table and a braai boma under the trees.",
-    art: { scene: "forest", house: "farmhouse", wall: "#c9b79c", roof: "#3c5a3e", accent: "#b5562f", seed: 6 },
     blockedOffsets: [[5, 4], [14, 2], [26, 5]],
   },
   {
@@ -189,7 +180,6 @@ const homeRecords = [
     amenities: ["wifi", "pool", "aircon", "braai", "parking"],
     description:
       "Two thatched rondavels joined by a shaded deck, a short drive from the estuary boats. Hippos grunt at night and monkeys visit at breakfast, so keep the fruit inside.",
-    art: { scene: "bushveld", house: "rondavel", wall: "#e6d2b0", roof: "#a07a43", accent: "#2e6b4f", seed: 8 },
     blockedOffsets: [[3, 2], [10, 5], [23, 3], [35, 5]],
   },
   {
@@ -208,7 +198,6 @@ const homeRecords = [
     amenities: ["wifi", "sea-view", "kitchen", "workspace"],
     description:
       "A sunny first-floor flat with a balcony over the harbour, the fish market and the tidal pool. Bookshops and cafes are a few steps away. Ideal for a writer, or two.",
-    art: { scene: "coast", house: "cottage", wall: "#f2c94c", roof: "#1f4e79", accent: "#d64545", seed: 12 },
     blockedOffsets: [[0, 3], [6, 2], [11, 4], [19, 3], [31, 2]],
   },
   {
@@ -227,7 +216,6 @@ const homeRecords = [
     amenities: ["braai", "pool", "fireplace", "kitchen", "parking", "pet-friendly", "mountain-view"],
     description:
       "A restored farmstead on a rooibos farm, with a reservoir pool, five bedrooms and walking trails to rock art. Built for big groups and long lazy lunches.",
-    art: { scene: "karoo", house: "farmhouse", wall: "#f3ede1", roof: "#8b4a2b", accent: "#4a7a5b", seed: 10 },
     blockedOffsets: [[4, 3], [17, 4], [32, 4]],
   },
 ] as const satisfies readonly z.input<typeof homeSchema>[];
