@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { z } from "zod";
-import { HomeArt } from "@/art/HomeArt";
 import { CancelBookingButton } from "@/components/CancelBookingButton";
+import { HomePhoto } from "@/components/HomePhoto";
 import { findHome } from "@/data/homes";
 import { useBookings } from "@/hooks/useAppStores";
 import { cn } from "@/lib/cn";
@@ -19,7 +19,7 @@ export function BookingCard({ booking, canCancel }: { booking: z.infer<typeof bo
 
   return (
     <article className={cn("booking-row", isCancelled && "is-cancelled")} data-testid="booking-row" data-ref={booking.ref}>
-      <HomeArt home={home} decorative className="booking-row-art" />
+      <HomePhoto homeId={home.id} sizes="(min-width: 48rem) 13.5rem, 100vw" isDecorative className="booking-row-photo" />
       <div className="booking-row-body">
         <div className="booking-row-head">
           <h3>

@@ -1,17 +1,25 @@
 import { Link } from "react-router-dom";
 import type { z } from "zod";
-import { HomeArt } from "@/art/HomeArt";
 import { FavouriteButton } from "@/components/FavouriteButton";
+import { HomePhoto } from "@/components/HomePhoto";
 import { Icon } from "@/components/Icon";
 import { Rating } from "@/components/Rating";
 import { formatWholeRand } from "@/lib/pricing";
 import type { homeSchema } from "@/lib/schemas/homeSchema";
 
-export function HomeCard({ home, linkSearch }: { home: z.infer<typeof homeSchema>; linkSearch: string }) {
+type HomeCardProps = {
+  home: z.infer<typeof homeSchema>;
+  linkSearch: string;
+  isPriority?: boolean;
+};
+
+const CARD_PHOTO_SIZES = "(min-width: 90rem) 21rem, (min-width: 80rem) 25vw, (min-width: 48rem) 50vw, 100vw";
+
+export function HomeCard({ home, linkSearch, isPriority = false }: HomeCardProps) {
   return (
     <article className="home-card">
       <div className="home-card-media">
-        <HomeArt home={home} decorative className="home-card-art" />
+        <HomePhoto homeId={home.id} sizes={CARD_PHOTO_SIZES} isPriority={isPriority} className="home-card-photo" />
         <FavouriteButton home={home} className="home-card-fav" />
       </div>
       <div className="home-card-body">

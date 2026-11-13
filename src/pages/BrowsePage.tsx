@@ -74,9 +74,9 @@ export function BrowsePage() {
         )}
         {!!results.length && (
           <ul className="home-grid">
-            {results.map((home) => (
+            {results.map((home, index) => (
               <li key={home.id}>
-                <HomeCard home={home} linkSearch={_stayQuery(search)} />
+                <HomeCard home={home} linkSearch={_stayQuery(search)} isPriority={index < 2} />
               </li>
             ))}
           </ul>

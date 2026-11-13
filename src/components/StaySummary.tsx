@@ -1,5 +1,5 @@
 import type { z } from "zod";
-import { HomeArt } from "@/art/HomeArt";
+import { HomePhoto } from "@/components/HomePhoto";
 import { formatDate, nightsBetween, type ISODateType } from "@/lib/dates";
 import type { homeSchema } from "@/lib/schemas/homeSchema";
 
@@ -14,7 +14,7 @@ export function StaySummary({ home, checkIn, checkOut, guests }: StaySummaryProp
   const nights = nightsBetween(checkIn, checkOut);
   return (
     <div className="stay-summary">
-      <HomeArt home={home} decorative className="stay-summary-art" />
+      <HomePhoto homeId={home.id} sizes="10.5rem" isDecorative className="stay-summary-photo" />
       <div className="stay-summary-text">
         <p className="eyebrow">{home.town}</p>
         <h3>{home.title}</h3>

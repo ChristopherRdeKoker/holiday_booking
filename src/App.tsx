@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { BookPage } from "@/pages/BookPage";
 import { BrowsePage } from "@/pages/BrowsePage";
+import { CreditsPage } from "@/pages/CreditsPage";
 import { HomePage } from "@/pages/HomePage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { SavedPage } from "@/pages/SavedPage";
@@ -39,6 +40,7 @@ const router = createHashRouter(
         { path: "/trip/:reference", element: <TripPage /> },
         { path: "/bookings", element: <TripsPage /> },
         { path: "/saved", element: <SavedPage /> },
+        { path: "/credits", element: <CreditsPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],
     },

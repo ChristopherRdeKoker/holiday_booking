@@ -1,31 +1,21 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import type { z } from "zod";
-import { artViewLabels, artViews, HomeArt, type ArtViewType } from "@/art/HomeArt";
-import { cn } from "@/lib/cn";
+import { HomePhoto } from "@/components/HomePhoto";
+import { findPhotoCredit } from "@/data/photoCredits";
 import type { homeSchema } from "@/lib/schemas/homeSchema";
 
 export function Gallery({ home }: { home: z.infer<typeof homeSchema> }) {
-  const [activeView, setActiveView] = useState<ArtViewType>("exterior");
+  const credit = findPhotoCredit(home.id);
+
   return (
-    <section className="gallery" aria-label="Pictures">
-      <figure className="gallery-main">
-        <HomeArt home={home} view={activeView} className="gallery-art" />
-        <figcaption className="gallery-caption">{artViewLabels[activeView]}</figcaption>
-      </figure>
-      <div className="gallery-thumbs" role="group" aria-label="Choose a picture">
-        {artViews.map((view) => (
-          <button
-            key={view}
-            type="button"
-            className={cn("gallery-thumb", view === activeView && "is-active")}
-            aria-pressed={view === activeView}
-            aria-label={`Show ${artViewLabels[view].toLowerCase()}`}
-            onClick={() => setActiveView(view)}
-          >
-            <HomeArt home={home} view={view} decorative className="gallery-thumb-art" />
-          </button>
-        ))}
-      </div>
-    </section>
+    <figure className="gallery">
+      <HomePhoto homeId={home.id} sizes="(min-width: 80rem) 64rem, 100vw" isPriority className="gallery-photo" />
+      <figcaption className="gallery-caption">
+        <p className="gallery-caption-subject">Pictured: {credit.subject}</p>
+        <p className="gallery-caption-credit">
+          Photo by {credit.author}, {credit.licence}. <Link to="/credits">Photo credits</Link>
+        </p>
+      </figcaption>
+    </figure>
   );
 }
