@@ -16,7 +16,8 @@ export function CreditsPage() {
       <ul className="credit-list">
         {photoCredits.map((credit) => {
           const home = findHome(credit.homeId);
-          const homeName = home ? `${home.title}, ${home.town}` : credit.homeId;
+          if (!home) throw new Error(`Photo credit points at unknown home "${credit.homeId}"`);
+          const homeName = `${home.title}, ${home.town}`;
           return (
             <li key={credit.homeId} className="credit-item" data-testid="photo-credit" data-photo={credit.homeId}>
               <HomePhoto homeId={credit.homeId} sizes="(min-width: 48rem) 15rem, 100vw" className="credit-photo" />

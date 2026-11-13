@@ -57,7 +57,7 @@ All files were fetched through the Wikimedia API on the date shown. The images a
 ## Forest Cabin, Hogsback
 
 - Home id: `hogsback-forest-cabin`
-- Pictured: Jubilee Creek waterfall in an indigenous forest (title from the source)
+- Pictured: Jubilee Creek waterfall in the Knysna forest, Western Cape
 - Author: ilf_
 - Licence: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/), Flickr licence review passed
 - Source page: https://commons.wikimedia.org/wiki/File:Jubilee_Creek_waterfall_(40347935034).jpg

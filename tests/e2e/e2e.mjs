@@ -44,12 +44,17 @@ async function newPage(opts = {}) {
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
   page.on('requestfailed', (r) => problems.push(`requestfailed: ${r.url()} ${r.failure()?.errorText}`));
   page.on('request', (r) => { if (!r.url().startsWith(ORIGIN) && !r.url().startsWith('data:')) problems.push(`off-origin request: ${r.url()}`); });
+  const pagePhotoBytes = new Map();
   page.on('response', async (r) => {
     if (r.status() >= 400) problems.push(`http ${r.status()}: ${r.url()}`);
-    if (r.url().endsWith('.webp')) photoBytes.set(new URL(r.url()).pathname, (await r.body().catch(() => Buffer.alloc(0))).length);
+    if (r.url().endsWith('.webp')) {
+      const size = (await r.body().catch(() => Buffer.alloc(0))).length;
+      photoBytes.set(new URL(r.url()).pathname, size);
+      pagePhotoBytes.set(new URL(r.url()).pathname, size);
+    }
   });
   await page.addInitScript(() => { document.addEventListener('securitypolicyviolation', (e) => console.error(`CSP-VIOLATION ${e.violatedDirective} ${e.blockedURI}`)); });
-  return { ctx, page };
+  return { ctx, page, pagePhotoBytes };
 }
 
 async function checkPhotosLoad(page, label, expectedIds) {
@@ -116,6 +121,20 @@ for (const [name, opts] of screens) {
   ok(await page.locator('.stay-summary-photo').getAttribute('alt') === '', `book ${name}: summary photo is decorative (empty alt)`);
   await page.screenshot({ path: `${SHOTS}/book-${name}.png` });
 
+  await page.locator('#name').fill('Thandi Mokoena');
+  await page.locator('#email').fill('thandi@example.com');
+  await page.locator('#agree').check();
+  await page.locator('.guest-form button[type=submit]').click();
+  await page.waitForURL(/#\/trip\//);
+  await page.goto(`${BASE}#/bookings`);
+  await page.waitForSelector('.booking-row-photo');
+  await checkPhotosLoad(page, `bookings ${name}`, ['cederberg-rock-farmstead']);
+  await page.screenshot({ path: `${SHOTS}/bookings-${name}.png` });
+  await page.getByRole('button', { name: 'Cancel booking' }).click();
+  await page.getByRole('button', { name: 'Yes, cancel' }).click();
+  await page.waitForSelector('.booking-row.is-cancelled .booking-row-photo');
+  await page.screenshot({ path: `${SHOTS}/bookings-${name}-cancelled.png`, fullPage: true });
+
   await page.goto(BASE);
   await page.waitForSelector('.home-card');
   await page.getByRole('link', { name: 'Photo credits' }).click();
@@ -135,6 +154,19 @@ for (const [name, opts] of screens) {
   await page.screenshot({ path: `${SHOTS}/credits-${name}-full.png`, fullPage: true });
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   ok(overflow <= 0, `credits ${name}: no horizontal scroll (overflow ${overflow}px)`);
+  await ctx.close();
+}
+
+console.log('3. phone at 3x pixel density');
+{
+  const { ctx, page, pagePhotoBytes } = await newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3 });
+  await page.goto(BASE);
+  await page.waitForSelector('.home-card');
+  await checkPhotosLoad(page, 'browse 390@3x', PHOTO_IDS);
+  const sources = await page.locator('.home-card img[data-photo]').evaluateAll((imgs) => imgs.map((img) => img.currentSrc));
+  ok(sources.length === 12 && sources.every((src) => src.endsWith('-1200.webp')), `browse 390@3x: all ${sources.length} cards use the 1200w file`);
+  const bytes = [...pagePhotoBytes.values()].reduce((sum, size) => sum + size, 0);
+  console.log(`  browse 390@3x fetched ${pagePhotoBytes.size} photo files, ${bytes} bytes`);
   await ctx.close();
 }
 

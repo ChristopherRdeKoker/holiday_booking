@@ -53,7 +53,7 @@ const photoCreditRecords = [
   {
     homeId: "hogsback-forest-cabin",
     alt: "A small waterfall tumbling into a dark pool, framed by tree ferns",
-    subject: "Jubilee Creek waterfall in an indigenous forest (title from the source)",
+    subject: "Jubilee Creek waterfall in the Knysna forest, Western Cape",
     author: "ilf_",
     licence: "CC0 1.0",
     licenceUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
